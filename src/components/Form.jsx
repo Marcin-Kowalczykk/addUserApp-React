@@ -1,8 +1,8 @@
 import React, { useState } from 'react';
 
 import styled from 'styled-components';
-
 import BoxWrapper from './Ui/BoxWrapper';
+import BoxButton from './Ui/BoxButton';
 
 const Wrapper = styled.form`
   display: flex;
@@ -20,27 +20,6 @@ const Input = styled.input`
   border: 1px solid #00000026;
   &:focus {
     border: 1px solid tomato;
-  }
-`;
-
-const Button = styled.button`
-  align-self: flex-start;
-  font-weight: bold;
-  color: white;
-  width: 5rem;
-  margin-top: 0.5rem;
-  padding: 0.5rem;
-  border-radius: 5px;
-  border: none;
-  outline: none;
-  background-color: tomato;
-  cursor: pointer;
-  transition: background-color 1s;
-  &:hover {
-    background-color: #d6452c;
-  }
-  &:focus {
-    background-color: #d6452c;
   }
 `;
 
@@ -76,13 +55,25 @@ const Form = ({ onAddDataToList }) => {
   return (
     <BoxWrapper>
       <Wrapper action="" onSubmit={formSubmitHandler}>
-        <Label htmlFor="">Username</Label>
-        <Input type="text" onChange={(e) => setUsernameInputValue(e.target.value)} />
-        <Label htmlFor="">Age ( years )</Label>
-        <Input type="number" onChange={(e) => setAgeInputValue(e.target.value)} />
-        <Label htmlFor="">Job</Label>
-        <Input type="text" onChange={(e) => setJobInputValue(e.target.value)} />
-        <Button type="submit">Add user</Button>
+        <Label htmlFor="username">Username</Label>
+        <Input
+          id="username"
+          type="text"
+          onChange={(e) => setUsernameInputValue(e.target.value)}
+        />
+        <Label htmlFor="name">Age ( years )</Label>
+        <Input
+          id="name"
+          type="number"
+          onChange={(e) => setAgeInputValue(e.target.value)}
+        />
+        <Label htmlFor="job">Job</Label>
+        <Input
+          id="job"
+          type="text"
+          onChange={(e) => setJobInputValue(e.target.value)}
+        />
+        <BoxButton type="submit">Add user</BoxButton>
       </Wrapper>
     </BoxWrapper>
   );
