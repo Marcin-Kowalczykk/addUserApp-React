@@ -2,7 +2,6 @@ import React from 'react';
 import styled from 'styled-components';
 
 const Button = styled.button`
-  align-self: flex-start;
   font-weight: bold;
   color: white;
   width: 5rem;
@@ -22,8 +21,8 @@ const Button = styled.button`
   }
 `;
 
-const BoxButton = ({ children, type, onClick }) => (
-  <Button type={type || 'button'} onClick={onClick}>
+const BoxButton = ({ children, className, type, onClick }) => (
+  <Button className={className} type={type || 'button'} onClick={onClick}>
     {children}
   </Button>
 );

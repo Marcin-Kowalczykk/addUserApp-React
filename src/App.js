@@ -1,8 +1,8 @@
 import React, { Fragment, useState } from 'react';
 
 import styled from 'styled-components';
-
 import GlobalStyle from './GlobalStyle';
+
 import Form from './components/Form';
 import ListOfUsers from './components/List/ListOfUsers';
 
@@ -14,18 +14,10 @@ const Wrapper = styled.div`
 `;
 
 function App() {
-  const expampleList = [
-    {
-      id: 1,
-      username: 'Marcin',
-      job: 'Student',
-      age: 24,
-    },
-  ];
-  const [dataListFromForm, setDataListFromForm] = useState(expampleList);
+  const [dataListFromForm, setDataListFromForm] = useState([]);
 
-  const addDataToList = (dataList) => {
-    setDataListFromForm((previous) => [dataList, ...previous]);
+  const addDataToList = (dataObjectFromForm) => {
+    setDataListFromForm((previous) => [dataObjectFromForm, ...previous]);
   };
 
   return (
@@ -33,7 +25,9 @@ function App() {
       <GlobalStyle />
       <Wrapper>
         <Form onAddDataToList={addDataToList} />
-        <ListOfUsers dataListFromForm={dataListFromForm} />
+        {dataListFromForm.length !== 0 && (
+          <ListOfUsers dataListFromForm={dataListFromForm} />
+        )}
       </Wrapper>
     </Fragment>
   );

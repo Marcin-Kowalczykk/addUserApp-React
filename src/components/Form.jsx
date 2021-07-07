@@ -1,10 +1,25 @@
 import React, { useState } from 'react';
 
-import styled from 'styled-components';
+import styled, { keyframes } from 'styled-components';
 import BoxWrapper from './Ui/BoxWrapper';
 import BoxButton from './Ui/BoxButton';
 
-const Wrapper = styled.form`
+import ErrorModal from './Ui/ErrorModal';
+
+const AnimationForm = keyframes`
+    0% {margin-left: 80rem;}
+    100% {margin-left: 0;}
+`;
+
+const Wrapper = styled.div`
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  width: 100%;
+  animation: ${AnimationForm} 1s;
+`;
+
+const FormWrapper = styled.form`
   display: flex;
   flex-direction: column;
 `;
@@ -23,10 +38,22 @@ const Input = styled.input`
   }
 `;
 
+const MainButton = styled(BoxButton)`
+  width: 15rem;
+`;
+
+const CloseButton = styled(BoxButton)`
+  margin-left: 63%;
+`;
+
 const Form = ({ onAddDataToList }) => {
   const [usernameInputValue, setUsernameInputValue] = useState('');
   const [ageInputValue, setAgeInputValue] = useState('');
   const [jobInputValue, setJobInputValue] = useState('');
+  const [errorState, setErrorState] = useState();
+  const [isClicked, setIsClicked] = useState(false);
+
+  const MIN_AGE_LENGTH = 18;
 
   const inputSettersArray = [
     setUsernameInputValue,
@@ -36,12 +63,29 @@ const Form = ({ onAddDataToList }) => {
 
   const clearForm = (inputsArray) => {
     inputsArray.forEach((element) => {
-      element(' ');
+      element('');
     });
   };
 
   const formSubmitHandler = (e) => {
     e.preventDefault();
+    if (
+      usernameInputValue.trim().length === 0 ||
+      ageInputValue.trim().length === 0 ||
+      jobInputValue.trim().length === 0
+    ) {
+      setErrorState({
+        title: 'Form has empty fields!',
+        msg: 'Please complete all fields',
+      });
+      return;
+    } else if (+ageInputValue < MIN_AGE_LENGTH) {
+      setErrorState({
+        title: 'Age is incorrect!',
+        msg: 'Age must be higher (min. 18)',
+      });
+      return;
+    }
     const dataObject = {
       id: Math.random().toString(),
       username: usernameInputValue,
@@ -52,31 +96,62 @@ const Form = ({ onAddDataToList }) => {
     clearForm(inputSettersArray);
   };
 
+  if (isClicked === false) {
+    return (
+      <BoxWrapper>
+        <Wrapper>
+          <MainButton type="button" onClick={() => setIsClicked(true)}>
+            Add new user
+          </MainButton>
+        </Wrapper>
+      </BoxWrapper>
+    );
+  }
+
   return (
-    <BoxWrapper>
-      <Wrapper action="" onSubmit={formSubmitHandler}>
-        <Label htmlFor="username">Username</Label>
-        <Input
-          id="username"
-          type="text"
-          onChange={(e) => setUsernameInputValue(e.target.value)}
+    <Wrapper>
+      {errorState && (
+        <ErrorModal
+          title={errorState.title}
+          msg={errorState.msg}
+          onHideModalByButton={() => setErrorState(null)}
         />
-        <Label htmlFor="name">Age ( years )</Label>
-        <Input
-          id="name"
-          type="number"
-          onChange={(e) => setAgeInputValue(e.target.value)}
-        />
-        <Label htmlFor="job">Job</Label>
-        <Input
-          id="job"
-          type="text"
-          onChange={(e) => setJobInputValue(e.target.value)}
-        />
-        <BoxButton type="submit">Add user</BoxButton>
-      </Wrapper>
-    </BoxWrapper>
+      )}
+      <BoxWrapper>
+        <FormWrapper action="" onSubmit={formSubmitHandler}>
+          <Label htmlFor="username">Username</Label>
+          <Input
+            id="username"
+            type="text"
+            value={usernameInputValue}
+            onChange={(e) => setUsernameInputValue(e.target.value)}
+          />
+          <Label htmlFor="name">Age ( years )</Label>
+          <Input
+            id="name"
+            type="number"
+            value={ageInputValue}
+            onChange={(e) => setAgeInputValue(e.target.value)}
+          />
+          <Label htmlFor="job">Job</Label>
+          <Input
+            id="job"
+            type="text"
+            value={jobInputValue}
+            onChange={(e) => setJobInputValue(e.target.value)}
+          />
+          <footer>
+            <BoxButton type="submit">Add user</BoxButton>
+            <CloseButton type="button" onClick={() => setIsClicked(false)}>
+              Close
+            </CloseButton>
+          </footer>
+        </FormWrapper>
+      </BoxWrapper>
+    </Wrapper>
   );
 };
 
 export default Form;
+
+// animacje

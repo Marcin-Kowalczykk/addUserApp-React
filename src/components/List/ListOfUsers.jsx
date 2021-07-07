@@ -1,11 +1,16 @@
 import React from 'react';
 
+import styled from 'styled-components';
 import BoxWrapper from '../Ui/BoxWrapper';
 
 import ListElement from './ListElement';
 
+const Ul = styled(BoxWrapper)`
+  text-align: center;
+`;
+
 const ListOfUsers = ({ dataListFromForm }) => (
-  <BoxWrapper>
+  <Ul>
     {dataListFromForm.map((element) => (
       <ListElement
         key={element.id}
@@ -14,7 +19,7 @@ const ListOfUsers = ({ dataListFromForm }) => (
         age={element.age}
       />
     ))}
-  </BoxWrapper>
+  </Ul>
 );
 
 export default ListOfUsers;
