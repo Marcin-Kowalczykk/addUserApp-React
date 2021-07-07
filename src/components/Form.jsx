@@ -42,9 +42,12 @@ const MainButton = styled(BoxButton)`
   width: 15rem;
 `;
 
-const CloseButton = styled(BoxButton)`
-  margin-left: 63%;
+const BottomButtons = styled.footer`
+  display: flex;
+  justify-content: space-between;
 `;
+
+const CloseButton = styled(BoxButton)``;
 
 const Form = ({ onAddDataToList }) => {
   const [usernameInputValue, setUsernameInputValue] = useState('');
@@ -140,12 +143,12 @@ const Form = ({ onAddDataToList }) => {
             value={jobInputValue}
             onChange={(e) => setJobInputValue(e.target.value)}
           />
-          <footer>
+          <BottomButtons>
             <BoxButton type="submit">Add user</BoxButton>
             <CloseButton type="button" onClick={() => setIsClicked(false)}>
               Close
             </CloseButton>
-          </footer>
+          </BottomButtons>
         </FormWrapper>
       </BoxWrapper>
     </Wrapper>
