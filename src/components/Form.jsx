@@ -47,8 +47,6 @@ const BottomButtons = styled.footer`
   justify-content: space-between;
 `;
 
-const CloseButton = styled(BoxButton)``;
-
 const Form = ({ onAddDataToList }) => {
   const [usernameInputValue, setUsernameInputValue] = useState('');
   const [ageInputValue, setAgeInputValue] = useState('');
@@ -145,9 +143,9 @@ const Form = ({ onAddDataToList }) => {
           />
           <BottomButtons>
             <BoxButton type="submit">Add user</BoxButton>
-            <CloseButton type="button" onClick={() => setIsClicked(false)}>
+            <BoxButton type="button" onClick={() => setIsClicked(false)}>
               Close
-            </CloseButton>
+            </BoxButton>
           </BottomButtons>
         </FormWrapper>
       </BoxWrapper>
