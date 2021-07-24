@@ -4,7 +4,7 @@ import styled, { keyframes } from 'styled-components';
 import BoxWrapper from './Ui/BoxWrapper';
 import BoxButton from './Ui/BoxButton';
 
-import ErrorModal from './Ui/ErrorModal';
+import ErrorModal from './Ui/ErrorModal/ErrorModal';
 
 const AnimationForm = keyframes`
     0% {margin-left: 80rem;}
