@@ -1,19 +1,19 @@
 {
   "files": {
-    "main.js": "/addUserApp-React/static/js/main.be3e4e3c.chunk.js",
-    "main.js.map": "/addUserApp-React/static/js/main.be3e4e3c.chunk.js.map",
+    "main.js": "/addUserApp-React/static/js/main.fe9822be.chunk.js",
+    "main.js.map": "/addUserApp-React/static/js/main.fe9822be.chunk.js.map",
     "runtime-main.js": "/addUserApp-React/static/js/runtime-main.a88e0eb9.js",
     "runtime-main.js.map": "/addUserApp-React/static/js/runtime-main.a88e0eb9.js.map",
-    "static/js/2.ea3aa844.chunk.js": "/addUserApp-React/static/js/2.ea3aa844.chunk.js",
-    "static/js/2.ea3aa844.chunk.js.map": "/addUserApp-React/static/js/2.ea3aa844.chunk.js.map",
+    "static/js/2.fbbb9872.chunk.js": "/addUserApp-React/static/js/2.fbbb9872.chunk.js",
+    "static/js/2.fbbb9872.chunk.js.map": "/addUserApp-React/static/js/2.fbbb9872.chunk.js.map",
     "static/js/3.1a293e12.chunk.js": "/addUserApp-React/static/js/3.1a293e12.chunk.js",
     "static/js/3.1a293e12.chunk.js.map": "/addUserApp-React/static/js/3.1a293e12.chunk.js.map",
     "index.html": "/addUserApp-React/index.html",
-    "static/js/2.ea3aa844.chunk.js.LICENSE.txt": "/addUserApp-React/static/js/2.ea3aa844.chunk.js.LICENSE.txt"
+    "static/js/2.fbbb9872.chunk.js.LICENSE.txt": "/addUserApp-React/static/js/2.fbbb9872.chunk.js.LICENSE.txt"
   },
   "entrypoints": [
     "static/js/runtime-main.a88e0eb9.js",
-    "static/js/2.ea3aa844.chunk.js",
-    "static/js/main.be3e4e3c.chunk.js"
+    "static/js/2.fbbb9872.chunk.js",
+    "static/js/main.fe9822be.chunk.js"
   ]
 }
